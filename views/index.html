@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="scaffolding">
+  <head>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />  
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Behemoth Web</title>
+    <link rel='icon' type='image/png' href='/images/pentagram-16px.png' />
+    <link rel="stylesheet" type="text/css" href="/css/app.css" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/css/error.css" />
+    <link rel="stylesheet" type="text/css" href="/css/angular-ui.css" />
+  </head>
+  <body>
+	<div ng-controller="RootCtrl" data-common-template-url="ng-templates">
+	    <div class="navbar navbar-inverse navbar-fixed-top">
+	        <div class="navbar-inner">
+	            <div class="container">
+
+	                <a class="brand" ng-click="$location.path('/home')">
+	                    <span class="simran">Behemoth
+	                    <r:img uri="/images/pentagram-16px-neg.png"/>
+	                    Records</span>
+	                </a>
+
+	                <ul class="nav">
+	                    <li ng-class="{active: $location.path() == '/'}">
+	                        <a ng-click="$location.path('/home')">Home</a>
+	                    </li>
+	                    <li ng-class="{active: $location.path().indexOf('/search') == 0}">
+	                        <a ng-click="$location.path('/search')">Rechercher</a>
+	                    </li>
+
+	                    <li ng-class="{active: $location.path().indexOf('/profile') == 0}">
+	                        <a ng-click="$location.path('/profile')">Profile</a>
+	                    </li>
+	                    <li ng-class="{active: $location.path().indexOf('/map') == 0}">
+	                        <a ng-click="$location.path('/map')">Map </a>
+	                    </li>
+	                    <li>
+	                        <a href="logout">Logout</a>
+	                    </li>
+	                    <li style="color: #999999;text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);padding: 10px 15px 10px;text-align: right">
+	                        ||&nbsp;&nbsp;&nbsp;&nbsp;Logged in as : <!--<sec:loggedInUserInfo field="username"/>-->
+	                    </li>
+	                </ul>
+
+	                <div class="navbar-form pull-right">
+
+
+	                </div>
+	                <!--<form >
+	                    <input class="span2" type="text" placeholder="Email" ng-model="username"/>
+	                    <input class="span2" type="password" placeholder="Password" ng-model="password">
+	                    <button type="submit" class="btn" ng-click="doLogin(username, password)">Sign in</button>
+	                </form>-->
+
+	            </div>
+	        </div>
+	    </div>
+
+
+	    <div class="mainview">
+	        <div class="container ng-view"></div>
+	    </div>
+
+
+	    <footer>
+	        <p class="simran">Behemoth Team | xke 2013.02</p>
+	    </footer>
+	    <script type="text/javascript">
+	        var CTX = '';
+	    </script>
+	</div>
+
+	<script src='http://maps.googleapis.com/maps/api/js?${config?.googlemaps?.apikey}&sensor=false'></script>
+	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="/js/lib/angular.js"></script>
+	<script src="/js/lib/angular-resource.js"></script>
+	<script src="/js/lib/utils/angular-cookies.js"></script>
+	<script src="/js/lib/ui/angular-ui.js"></script>
+	<script src="/js/lib/angular.js"></script>
+	<script src="/js/lib/jquery/jquery.atmosphere.js"></script>
+	<script src="/js/lib/atmosphere-integration.js"></script>
+	<script src="/js/lib/bootstrap/bootstrap.js"></script>
+	<script src="/js/app/scaffolding.js"></script>
+	<script src="/js/app/module.js"></script>
+	<script src="/js/app/services/ScaffoldingService.js"></script>
+	<script src="/js/app/services/FlashService.js"></script>
+	<script src="/js/app/services/AuthenticationService.js"></script>
+	<script src="/js/app/controllers/RootCtrl.js"></script>
+	<script src="/js/app/controllers/MapController.js"></script>
+	<script src="/js/app/controllers/LoginCtrl.js"></script>
+  </body>
+</html>
