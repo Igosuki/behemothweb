@@ -1,7 +1,7 @@
 /**
  * The main scaffolding module.
  */
-var scaffoldingModule = angular.module('scaffolding', ['grailsService', 'flashService', 'ui', 'ngCookies', 'http-auth-interceptor']);
+var scaffoldingModule = angular.module('scaffolding', ['grailsService', 'ui', 'ngCookies']);
 
 scaffoldingModule.value('ui.config', {});
 
@@ -11,7 +11,7 @@ scaffoldingModule.value('ui.config', {});
 scaffoldingModule.config([
     '$routeProvider',
     function($routeProvider) {
-        var baseUrl = CTX + "/ng-templates/";
+        var baseUrl = "./";
         function list(routePathParams) {
             return baseUrl + routePathParams.domain+"/list.html";
         }
@@ -26,23 +26,14 @@ scaffoldingModule.config([
         }
 
         $routeProvider.
-            when('/map', { templateUrl: baseUrl + 'imap/active_map.html', controller: MapController}).
             when('/home', { templateUrl: baseUrl + '/home.html' }).
-            when('/search', { templateUrl: baseUrl + '/search.html' }).
-            when('/badges', { templateUrl: baseUrl + '/badges.html' }).
-            when('/profile', { templateUrl: baseUrl + '/profile.html' }).
-            when('/', {redirectTo: '/home'} ).
-            when('/map', { templateUrl: baseUrl + 'imap/active_map.html', controller: MapController}).
-            when('/login', { templateUrl: baseUrl + 'login.html', controller: LoginController}).
-            otherwise({redirectTo: '/'});
-        /*
-            when('/author/secured', {templateUrl: baseUrl + 'author/list.html', controller: ListCtrl}).
             when('/:domain/create', {templateUrl: create, controller: CreateCtrl}).
             when('/:domain/edit/:id', {templateUrl: edit, controller: EditCtrl}).
             when('/:domain/list', {templateUrl: list, controller: ListCtrl}).
             when('/:domain/show/:id', {templateUrl: show, controller: ShowCtrl}).
-            */
-
+            when('/', {redirectTo: '/home'} ).
+            when('/map', { templateUrl: baseUrl + 'imap/active_map.html', controller: MapController}).
+            otherwise({redirectTo: '/'});
     }
 ]);
 
@@ -154,23 +145,23 @@ scaffoldingModule.directive('pagination', function() {
     }
 });
 
-function toArray(element) {
-    return Array.prototype.slice.call(element);
-}
+//function toArray(element) {
+//    return Array.prototype.slice.call(element);
+//}
+//
+//Function.prototype.curry = function() {
+//    if (arguments.length < 1) {
+//        return this; //nothing to curry with - return function
+//    }
+//    var __method = this;
+//    var args = toArray(arguments);
+//    return function() {
+//        return __method.apply(this, args.concat(toArray(arguments)));
+//    }
+//}
 
-Function.prototype.curry = function() {
-    if (arguments.length < 1) {
-        return this; //nothing to curry with - return function
-    }
-    var __method = this;
-    var args = toArray(arguments);
-    return function() {
-        return __method.apply(this, args.concat(toArray(arguments)));
-    }
-}
 
-
-$.fn.serializeObject = function()
+/*$.fn.serializeObject = function()
 {
     var o = {};
     var a = this.serializeArray();
@@ -185,4 +176,4 @@ $.fn.serializeObject = function()
         }
     });
     return o;
-};
+};*/
